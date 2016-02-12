@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/paulducsantos/burger/issues"
   },
-  "homepage": "https://github.com/paulducsantos/burger#readme"
+  "homepage": "https://github.com/paulducsantos/burger#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "connect": "^3.4.1",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.5",
+    "mysql": "^2.10.2"
+  }
 }
