@@ -4,11 +4,29 @@ var burger = require('../models/burger.js');
 
 var app = express();
 
-module.exports.controller = function(app) {
+module.exports.burgerController = function(app) {
 
   app.get('/', function(req, res) {
-    res.render('index');
+    burger.findAllBurgers(function(burgers) {
+      var data = {
+        allBurgers: burgers
+      }
+      res.render('index', {burgers});
+    });
+    
   });
 
-}
+  app.post('/newBurger', function(req, res) {
+    burger.addBurger(req.body.burgerName, function(result) {
+      console.log(result);
+      res.redirect('/');
+    });
+  });
 
+  app.post('/devour/:burgerName', function(req, res) {
+    burger.devour(req.params.burgerName, function(result) {
+      console.log(result);
+      res.redirect('/');
+    });
+  });
+}

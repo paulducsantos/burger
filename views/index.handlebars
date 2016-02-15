@@ -1,4 +1,39 @@
-<form method=post action='/'>
-  <input type="text" name="burgerName"></input>
-  <button type="submit">add burger</button>
-</form>
+<div class='row'>
+  <div class='col s6'>
+    <h3>Your Burgers</h3>
+    <ul>
+      {{#each burgers}}
+        {{#unless this.devoured}}
+      <li>
+        {{this.id}}. {{this.burger_name}}
+        <span>
+          <form method='post' action='/devour/{{this.burger_name}}'><button>Devour it!</button></form>
+        </span>
+      </li>
+        {{/unless}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class='col s6'>
+    <h3>You ate these burgers</h3>
+    <ul>
+      {{#each burgers}}
+        {{#if this.devoured}}
+      <li>{{this.burger_name}}
+        <span>
+          <form method='post' action='/devour/{{this.burger_name}}'><button>Devour it!</button></form></li>
+        </span>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col s4 offset-s4">
+    <form method='post' action='/newBurger'>
+      <input type="text" name="burgerName"></input>
+      <button type="submit">add burger</button>
+    </form>
+  </div>  
+</div>

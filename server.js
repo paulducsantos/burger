@@ -13,14 +13,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.engine('handlebars', expressHandlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-route.controller(app);
-
-
-
-
-
-
-
+route.burgerController(app);
 
 
 

@@ -1,5 +1,20 @@
-// var orm = require('../config/orm.js');
+var orm = require('../config/orm.js');
 
-// orm.newBurger();
 
-// orm.devour();
+var addOrDevour = {
+
+  findAllBurgers: function(callback) {
+    orm.getBurgers(callback);
+  },
+
+  addBurger: function(burgerName, callback) {
+    orm.newBurger(burgerName, callback);
+  },
+
+  devour: function(burgerName, callback) {
+    orm.devour(burgerName, callback);
+  }
+}
+
+
+module.exports = addOrDevour;

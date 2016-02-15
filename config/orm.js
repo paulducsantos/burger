@@ -1,14 +1,29 @@
-// var connection = require('./connection.js');
+var connection = require('./connection.js');
 
-// module.exports = {
-//     newBurger: function(addBurger) {
-//       connection.query('INSERT INTO burgers (burger_name) VALUES (?);', [addBurger], function(err, result) {
-//         if (err) throw err;
-//       });
-//     },
-//     devour: function(devourBurger) {
-//       connection.query('UPDATE burgers devoured=false WHERE burger_name=?', [devourBurger], function(err, result) {
-//         if (err) throw err;
-//       });
-//     }
-// }
+
+var orm = {
+
+  getBurgers: function(callback) {
+    connection.query('SELECT * FROM burgers', function(err, result) {
+      if (err) throw err;
+      console.log(result);
+      callback(result);
+    });
+  },
+
+  newBurger: function(addBurger, callback) {
+    connection.query('INSERT INTO burgers (burger_name, devoured) VALUES (?, ?);', [addBurger, false], function(err, result) {
+      if (err) throw err;
+      callback(result);
+    });
+  },
+
+  devour: function(burger, callback) {
+    connection.query('UPDATE burgers SET devoured=true WHERE burger_name=?', [burger], function(err, result) {
+      if (err) throw err;
+      callback(result);
+    });
+  }
+}
+
+module.exports = orm;
