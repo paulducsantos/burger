@@ -6,7 +6,7 @@ var methodOverride    = require('method-override');
 var route             = require('./controllers/burgers_controller.js');
 var app               = express();
 
-const PORT = process.env.NODE_ENV || 8080;
+const PORT = process.env.PORT || 8080;
 
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(bodyParser.urlencoded({extended: false}));
