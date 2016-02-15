@@ -18,14 +18,12 @@ module.exports.burgerController = function(app) {
 
   app.post('/newBurger', function(req, res) {
     burger.addBurger(req.body.burgerName, function(result) {
-      console.log(result);
       res.redirect('/');
     });
   });
 
   app.post('/devour/:burgerName', function(req, res) {
     burger.devour(req.params.burgerName, function(result) {
-      console.log(result);
       res.redirect('/');
     });
   });
